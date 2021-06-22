@@ -15,10 +15,22 @@ def create_app():
 	# Initialise Plugins
 	db.init_app(app)
 	login_manager.init_app(app)
-	# put login view
+	# ToDo put login view
 	sess.init_app(app)
 
 	@app.route('/hello')
 	def hello():
+		print(app.config)
 		return 'hello, world'
-	return app
+
+	with app.app_context():
+		# Include routes
+		from . import auth
+
+		# Register Blueprints
+		app.register_blueprint(auth.bp)
+
+		# Create the SQL tables from our data models
+		db.create_all()
+
+		return app
