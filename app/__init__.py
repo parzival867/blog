@@ -26,9 +26,11 @@ def create_app():
 	with app.app_context():
 		# Include routes
 		from . import auth
+		from . import blog
 
 		# Register Blueprints
 		app.register_blueprint(auth.bp)
+		app.register_blueprint(blog.bp)
 
 		# Create the SQL tables from our data models
 		db.create_all()

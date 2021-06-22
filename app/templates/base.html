@@ -32,18 +32,16 @@
         <header>
             <nav class="navbar navbar-expand-md bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Family Blog</a>
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="{{ url_for('blog.index_page') }}">Home</a>
-                    </div>
+                    <a class="navbar-brand" href="{{ url_for('blog.index_page') }}">Family Blog</a>
                     {% if current_user.is_authenticated %}
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="#">Welcome, {{ current_user.username }}</a>
+                        <a class="nav-link" href="{{ url_for('auth.logout_page') }}">Logout</a>
                     </div>
                     {% else %}
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="#">Login</a>
-                        <a class="nav-ling" href="#">Register</a>
+                        <a class="nav-link" href="{{ url_for('auth.login_page') }}">Login</a>
+                        <a class="nav-link" href="{{ url_for('auth.register_page') }}">Register</a>
                     </div>
                     {% endif %}
                 </div>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<h1 class="text-center p-3 my-3">{% block title %}Register{% endblock %}</h1>
+	<div class="container">
+		<form method="post" class="form-register">
+		{{ form.hidden_tag() }}
+			{{ form.username.label(class="form-label") }}
+			{{ form.username(class="form-control mb-3", placeholder="User Name") }}
+
+			{{ form.email_address.label(class="form-label") }}
+			{{ form.email_address(class="form-control mb-3", placeholder="Email Address") }}
+
+			{{ form.password1.label(class="form-label") }}
+			{{ form.password1(class="form-control mb-3", placeholder="Password") }}
+
+			{{ form.password2.label(class="form-label") }}
+			{{ form.password2(class="form-control mb-3", placeholder="Confirm Password") }}
+
+			<div class="checkbox mb-3">
+				<p>Already have an account?</p>
+				<a class="btn btn-sm btn-secondary" href="{{ url_for('auth.login_page') }}">Log in</a>
+			</div>
+
+			<div class="d-grid my-5">
+				{{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+			</div>
+		</form>
+	</div>
+{% endblock%}
