@@ -1,6 +1,7 @@
 from . import db, login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 # Login manager for flask_login
 @login_manager.user_loader
@@ -30,7 +31,7 @@ class User(db.Model, UserMixin):
 
 class Post(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	created = db.Column()#date time
+	created = db.Column(db.DateTime, default=datetime.utcnow)#date time
 	title = db.Column(db.String(50), nullable=False)
-	body = db.Column(db.String(2000), nullable=False)
+	body = db.Column(db.Text, nullable=False)
 	author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
