@@ -1,0 +1,30 @@
+<!-- Delete Confirm-->
+<div class="modal fade" id="Modal-DeleteConfirm" tabindex="-1" aria-labelledby="DeleteConfirm" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ModalLabel">
+					{{ post.title }}
+				</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form method="post" action="{{ url_for('blog.delete', id=post.id) }}">
+					<p class="text-center">
+						Are you sure you want to delete?
+					</p>
+					<p class="small text-center">
+						By clicking delete, this post will be removed. Cannot be undone.
+					</p>
+					<div class="d-grid">
+						<button  type="submit" class="btn btn-danger">Delete</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				
+			</div>
+		</div>
+	</div>
+</div>

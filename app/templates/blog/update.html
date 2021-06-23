@@ -2,12 +2,13 @@
 
 
 {% block main %}
-<h1 class="text-center p-3 my-3">{% block title %}New Post{% endblock %}</h1>
+{% include 'blog/includes/post_modals.html' %}
+<h1 class="text-center p-3 my-3">{% block title %}Edit "{{ post.title }}"{% endblock %}</h1>
 <div class="container">
-	<form method="post" class="form-create">
+	<form method="post" class="form-update">
 	{{ form.hidden_tag() }}
 		{{ form.title.label(class="form-label") }}
-		{{ form.title(class="form-control mb-3", placeholder="Title")}}
+		{{ form.title(class="form-control mb-3", id="title" )}}
 
 		{{ form.body.label(class="form-label") }}
 		{{ form.body(class="form-control mb-3", id="body" )}}
@@ -17,5 +18,6 @@
 			{{ form.submit(class="btn btn-primary btn-lg btn-block") }}
 		</div>
 	</form>
+	<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal-DeleteConfirm">Delete post</button>
 </div>
 {% endblock %}

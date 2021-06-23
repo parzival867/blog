@@ -31,3 +31,8 @@ class CreateForm(FlaskForm):
 	title = StringField(label='Title:', validators=[DataRequired()])
 	body = TextAreaField(label='Body:')
 	submit = SubmitField(label='Save')
+
+class UpdateForm(FlaskForm):
+	title = StringField(label='Title:', validators=[DataRequired()])
+	body = TextAreaField(label='Body:')
+	submit = SubmitField(label='Save')
