@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<h1 class="text-center p-3 my-3">{% block title %}New Post{% endblock %}</h1>
+<div class="container">
+	<form method="post" class="form-create">
+	{{ form.hidden_tag() }}
+		{{ form.title.label(class="form-label") }}
+		{{ form.title(class="form-control mb-3", placeholder="Title")}}
+
+		{{ form.body.label(class="form-label") }}
+		{{ form.body(class="form-control mb-3", id="body", value="{{ request.form['body'] }}")}}
+
+
+		<div class="d-grid my-5">
+			{{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+		</div>
+	</form>
+</div>
+{% endblock %}
